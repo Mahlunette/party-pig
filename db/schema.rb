@@ -10,9 +10,36 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 2022_03_28_094810) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "buckets", force: :cascade do |t|
+    t.string "name"
+    t.bigint "party_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["party_id"], name: "index_buckets_on_party_id"
+  end
+
+  create_table "parties", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "tasks", force: :cascade do |t|
+    t.bigint "bucket_id", null: false
+    t.string "name"
+    t.text "description"
+    t.integer "index"
+    t.string "status"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["bucket_id"], name: "index_tasks_on_bucket_id"
+  end
+
+  add_foreign_key "buckets", "parties"
+  add_foreign_key "tasks", "buckets"
 end
