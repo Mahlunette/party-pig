@@ -1,6 +1,7 @@
 class PartiesController < ApplicationController
   def show
     @party = Party.find(params[:id])
+    @bucket =Bucket.new
   end
 
   def new
@@ -8,9 +9,9 @@ class PartiesController < ApplicationController
   end
 
   def create
-    @party = Party.new(party_params)
-    if @party.save
-      redirect_to party_path(@party)
+    party = Party.new(party_params)
+    if party.save
+      redirect_to party_path(party)
     else
       render :new
     end
