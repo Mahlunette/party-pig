@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_28_094810) do
+ActiveRecord::Schema.define(version: 2022_03_30_071527) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,9 +34,9 @@ ActiveRecord::Schema.define(version: 2022_03_28_094810) do
     t.string "name"
     t.text "description"
     t.integer "index"
-    t.string "status"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.boolean "completed", default: false
     t.index ["bucket_id"], name: "index_tasks_on_bucket_id"
   end
 
