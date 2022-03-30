@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
   root to: 'pages#home'
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  resources :parties, only: [:new, :create, :show] do
+    resources :buckets, only: [:create, :update]
+  end
+  # resources :buckets, only: [:create, :update] do
+  resources :tasks, only: [:create, :update]
 end
