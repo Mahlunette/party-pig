@@ -1,7 +1,7 @@
 class PartiesController < ApplicationController
   def show
     @party = Party.find(params[:id])
-    @bucket =Bucket.new
+    @bucket = Bucket.new
   end
 
   def new
