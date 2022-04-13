@@ -2,6 +2,8 @@ class PartiesController < ApplicationController
   def show
     @party = Party.find(params[:id])
     @bucket = Bucket.new
+    # render json: { party: @party, buckets: @party.buckets }
+    render "show.json"
   end
 
   def new
