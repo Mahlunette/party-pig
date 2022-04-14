@@ -1,9 +1,11 @@
 import React, {useState, useEffect} from 'react'
+import Task from './Task'
 
- const Bucket = () => {
+const Bucket = (props) => {
   return (
     < div className="bucket-container">
-      Buckets
+     <h2>{props.name}</h2>
+      <Task />
     </div>
   )
 }

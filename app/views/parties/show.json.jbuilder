@@ -1,4 +1,3 @@
-json.party do
   json.name  @party.name
   json.buckets do
     json.array! @party.buckets do |bucket|
@@ -6,4 +5,3 @@ json.party do
       json.tasks bucket.tasks, :id, :name, :description, :index, :completed
     end
   end
-end

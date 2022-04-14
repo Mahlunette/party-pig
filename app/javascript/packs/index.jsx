@@ -3,24 +3,12 @@
 // of the page.
 
 import React from 'react'
-import ReactDOM from 'react-dom'
-import PropTypes from 'prop-types'
-import App from '../components/App'
-
-const Hello = props => (
-  <div>Hello {props.name}!</div>
-)
-
-Hello.defaultProps = {
-  name: 'David'
-}
-
-Hello.propTypes = {
-  name: PropTypes.string
-}
+import {createRoot} from 'react-dom/client'
+import App  from '../components/App'
 
 document.addEventListener('DOMContentLoaded', () => {
-  ReactDOM.render(
-    <App />
-  )
+  const container = document.getElementById("app");
+  // container.setAttribute("id", "app");
+  const root = createRoot(container);
+  root.render(<App />);
 })
