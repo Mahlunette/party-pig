@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { AddBucketForm } from './AddBucketForm';
 import Bucket from './Bucket'
 import Loader from './Loader';
 
@@ -24,16 +25,21 @@ const App = () => {
 
 
   return (
-    <div>
-      <h1>Here we are debugging like pros</h1>
-     {
-       loading ? <Loader /> : (
-         party.buckets.map((bucket, index)=>{
-           return <Bucket key={index} name={bucket.name} tasks={bucket.tasks} />
-         }
-         )
-       )
-     }
+    <div className='container'>
+      <h1>{party.name}</h1>
+      {
+        loading ? <Loader /> : (
+          <>
+            <div className="bucket-list d-flex flex-wrap"> {
+              party.buckets.map((bucket, index) => {
+                return <Bucket key={index} name={bucket.name} tasks={bucket.tasks} />
+              }
+              )}
+            </div>
+            <AddBucketForm />
+          </>
+        )
+      }
 
     </div>
   )
